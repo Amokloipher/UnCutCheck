@@ -4,8 +4,10 @@
 	
 	var ofdbSearchResults_url = 'http://www.ofdb.de/view.php?page=suchergebnis';
 	var ofdbBaseUrl = "http://www.ofdb.de/";
+	var ofdbEANAPIUrl = "http://ofdbgw.org/searchean/";
+	var ofdbFassungAPIUrl = "http://ofdbgw.org/fassung/";
+	var ofdbFassungPageUrl = "http://www.ofdb.de/view.php?page=fassung&fid={id1}&vid={id2}";
 	var extractedDirectUrl;
-	var MovieInformation;
 	
 	
 	var methods = {
@@ -14,39 +16,43 @@
 		},
 		
 		gatherMovieInfo : function(ean) {
-//			alert(ofdbSearchResults_url +' '+ean);
 			
 			var jqxhr = $.ajax({
-				type	:	'POST',
-				url		:	ofdbSearchResults_url,
-				data	:	{
-					'Kat'	:	'EAN',
-					'SText'	:	ean
-				},
+				url		:	ofdbEANAPIUrl+ean,
 				success	:	function(data){
-					followUpUrlAjax($("td .Normal a:last",data).attr('href'));
+					getFassung($("fassungid", data).text());
 				}
 			});
 			
-		},
-		
-		getMovieInformation	:	function(){
-			return MovieInformation;
 		}
 	};
 
-	
-	function followUpUrlAjax(followUpUrl){
+	function getFassung(id){
 		var jqxhr = $.ajax({
-			url		:	ofdbBaseUrl+followUpUrl,
-			success	:	function(data){
-				MovieInformation.title = $("#IMBar + table table tr[valign] font b").text();
+			url			: 	ofdbFassungAPIUrl+id,
+			success		:	function(data){
+				alert($("titel", data).text()); //TODO: Remove 
+				inquireIsCut(id);
+			}
+		});
+	}
+	
+	function inquireIsCut(id){
+		var stringParts = id.split(";");
+		var gotoUrl = ofdbFassungPageUrl.replace("{id1}", stringParts[0]);
+		gotoUrl = gotoUrl.replace("{id2}", stringParts[1]);
+		var jqxhr = $.ajax({
+			url			: 	gotoUrl,
+			success		:	function(data){
+				
+				// FINALLY something to work with...
+				alert($("td font.Daten b:first", data).text());
 				
 			}
 		});
-		
-		alert(ofdbBaseUrl+followUpUrl);
 	}
+
+	
 	
 	$.fn.uncut = function(method) {
 
