@@ -12,57 +12,77 @@
 		<script type="text/javascript" charset="utf-8" src="../js/barcodescanner.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/barcode-scanning.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/de.amokloipher.uncutcheck.multitool.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../js/script.js"></script>
 		
 		<title>UnCut Check</title>
 	</head>
 	<body>
 	
 <!-- 		Index Page -->
-		<div data-role="page" class="page start-page" id="start-page">
+		<div data-role="page" data-theme="a" data-content-theme="a" class="apage start-page" id="start-page">
 	
-			<header data-role="header" class="header" data-theme="a">
-				<h1>UnCut Checker</h1>
-			 </header>
+			<div data-role="header" class="my-header" >
+				<h1 style="z-index: 999">UnCut Checker</h1>
+			 </div>
 	
-			<div data-role="content" class="main-content" data-theme="a"> Content 
+			<div data-role="content" class="main-content">
 				<div class="introduction-text">
-					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
-					sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est 
-					Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
-					ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-					Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+					<h2> Bitte beachten/Please Notice: </h2>
+					<p>Diese App scannt deutsche DVDs und sammelt Informationen darüber bei ofdb.de
+					Sämtliche Inhalte werden von ofdb geliefert und es besteht kein Anspruch auf Vollständigkeit.</p>
+					<p>This App scans german DVDs and provides Information collected from ofdb.de
+					All content is provided by ofdb and there is no claim for completion of the information</p>
 				</div>
 				<div class="controlls">
-					<a href="#" class="start-scan" data-role="button" data-theme="a">Start scanning!</a>
+					<a href="#" class="start-scan" data-role="button">Start scanning!</a>
 				</div>
 			</div>
 	
-			<footer data-role="footer" class="footer" data-theme="a"> foo </footer>
+			<div data-role="footer" class="my-footer" data-role="footer"></div>
 	
 		</div>
 		
 		
 <!-- 		Scan Result Page -->
-		<div data-role="page" class="page scan-result-page" id="scan-result">
+		<div data-role="page" data-content-theme="a" class="apage scan-result-page" id="scan-result">
 	
-			<header data-role="header" class="header" data-theme="a">
+			<div data-role="header" class="my-header">
 				<h1>UnCut Checker</h1>
-			 </header>
+			 </div>
 	
-			<div data-role="content" class="main-content" data-theme="a"> Content 
-				<div class="introduction-text">
-					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
-					sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est 
-					Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
-					ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-					Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			<div data-role="content" class="main-content">
+				<div class="results table">
+					<div class="table-row">
+						<div class="table-cell title-label col1">Titel: </div>
+						<div class="table-cell col2" id="title-cell"></div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell label-label col1">Label: </div>
+						<div class="table-cell col2" id="label-cell"></div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell cut-label col1">Geschnitten: </div>
+						<div class="table-cell col2" id="cut-cell"></div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell freigabe-label col1">Freigabe: </div>
+						<div class="table-cell col2" id="freigabe-cell"></div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell index-label col1">indiziert: </div>
+						<div class="table-cell col2" id="index-cell"></div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell laufzeit-label col1">Laufzeit: </div>
+						<div class="table-cell col2" id="laufzeit-cell"></div>
+					</div>
 				</div>
 				<div class="controlls">
-					<a href="#" class="start-scan" data-role="button" data-theme="a">Start scanning!</a>
+					<a href="#start-page" class="back" data-role="button">Back!</a>
 				</div>
 			</div>
 	
-			<footer data-role="footer" class="footer" data-theme="a"> Footer </footer>
+			<div data-role="footer" class="my-footer"> Footer </div>
 	
 		</div>
 	</body>
