@@ -48,7 +48,7 @@
 				if($("rcode", data).text()!='0'){
 					console.error("Fehler beim Finden der Fassung! rc:"+$("rcode", data).text());
 					if(firstRetries>0){
-						setTimeout(checkOFDB(ean), 2000);
+						setTimeout(function(){checkOFDB(ean)}, 2000);
 						return null;
 					}else{
 						hideModal();
@@ -68,7 +68,7 @@
 				if($("rcode", data).text()!='0' || $("titel", data).text().length==0){
 					console.error("Fehler beim Aufruf der Fassung! rc:"+$("rcode", data).text());
 					if(fassungRetries>0){
-						setTimeout(getFassung(id), 2000);
+						setTimeout(function(){getFassung(id)}, 2000);
 						return null;
 					}else{
 						hideModal();
