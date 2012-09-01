@@ -10,6 +10,7 @@
 		<script type="text/javascript" charset="utf-8" src="../js/configure-jq-mobile.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/jquery.mobile-1.1.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/SQLitePlugin.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../js/global-objects.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/barcodescanner.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/barcode-scanning.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../js/de.amokloipher.uncutcheck.multitool.js"></script>
@@ -23,23 +24,27 @@
 		<div data-role="page" data-theme="a" data-content-theme="a" class="apage start-page" id="start-page">
 	
 			<div data-role="header" class="my-header" >
-				<h1 style="z-index: 999">UnCut Checker</h1>
+				<h1>UnCut Checker</h1>
 			 </div>
 	
 			<div data-role="content" class="main-content">
-				<div class="introduction-text">
-					<h2> Bitte beachten/Please Notice: </h2>
-					<p>Diese App scannt deutsche DVDs und sammelt Informationen darüber bei ofdb.de
-					Sämtliche Inhalte werden von ofdb geliefert und es besteht kein Anspruch auf Vollständigkeit.</p>
-					<p>This App scans german DVDs and provides Information collected from ofdb.de
-					All content is provided by ofdb and there is no claim for completion of the information</p>
-				</div>
+<!-- 				<div class="introduction-text"> -->
+<!-- 					<h2> Bitte beachten/Please Notice: </h2> -->
+<!-- 					<p>Diese App scannt deutsche DVDs und sammelt Informationen darüber bei ofdb.de -->
+<!-- 					Sämtliche Inhalte werden von ofdb geliefert und es besteht kein Anspruch auf Vollständigkeit.</p> -->
+<!-- 					<p>This App scans german DVDs and provides Information collected from ofdb.de -->
+<!-- 					All content is provided by ofdb and there is no claim for completion of the information</p> -->
+<!-- 				</div> -->
 				<div class="controlls">
 					<a href="#" class="start-scan" data-role="button">Start scanning!</a>
+					<br />
+					<a href="#" class="foo" data-role="button" onClick="UncutCheckR.debug.fillDummyData();">Fill Dummy Data</a>
+					<br />
+					<a href="#" class="shelf-link" data-role="button">Show Shelf</a>
 				</div>
 			</div>
 	
-			<div data-role="footer" class="my-footer" data-role="footer"></div>
+<!-- 			<div data-role="footer" class="my-footer" data-role="footer"></div> -->
 	
 		</div>
 		
@@ -83,8 +88,21 @@
 				</div>
 			</div>
 	
-			<div data-role="footer" class="my-footer"> Footer </div>
+<!-- 			<div data-role="footer" class="my-footer"> Footer </div> -->
+		</div>
+		
+		
+		
+		
+		<div data-role="page" data-theme="a" data-content-theme="a" class="apage movie-list-page" id="movie-list">
+			<div data-role="header" class="my-header" >
+				<h1>UnCut Checker</h1>
+			</div>
 	
+			<div data-role="content" class="main-content">
+				<ul class="list-container">
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>
