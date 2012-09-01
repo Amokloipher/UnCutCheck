@@ -41,6 +41,7 @@
 		firstRetries--;
 		eanMember = ean;
 		console.log("|||"+ean+"|||");
+		MovieInfo.ean = ean;
 		var jqxhr = $.ajax({
 			url		:	ofdbEANAPIUrl+ean,
 			cache		: false,

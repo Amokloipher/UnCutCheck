@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('.start-scan').on('click', function(){
+	$('.start-scan').on('tap', function(){
 			
 //		processScanResult({text: '4012019979686'});
 		

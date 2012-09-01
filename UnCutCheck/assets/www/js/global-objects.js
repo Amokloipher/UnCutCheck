@@ -73,6 +73,7 @@ var UncutCheckR	=	{
 		gui				:	{
 			renderShelf			:	function(parent){
 				console.debug('[gui] renderShelf invoked!');
+				$(parent).html();
 				UncutCheckR.database.getMovieList(config.database.modes.current, function(tx, rs){
 					console.debug('[gui] successfully received MoviesList');
 					var i;

@@ -27,8 +27,38 @@ $(document).on('ready', function(){
 	});
 	
 	$('.shelf-link').bind('tap', function(){
-		config.database.modes.current = 'shelf';
+		config.database.modes.current = config.database.modes.shelf;
 		$.mobile.changePage("#movie-list");
+	});
+	$('.wishlist-link').bind('tap', function(){
+		config.database.modes.current = config.database.modes.wishlist;
+		$.mobile.changePage("#movie-list");
+	});
+	
+	$('#scan-result .shelf').bind('tap', function(){
+		var movieInfo = $(document).uncut('getMovieInfo');
+		UncutCheckR.database.addMovie(new Movie(
+								movieInfo.ean,
+								movieInfo.title,
+								movieInfo.fsk,
+								movieInfo.cut,
+								movieInfo.index,
+								movieInfo.time,
+								config.database.modes.shelf
+							));
+	});
+	
+	$('#scan-result .wishlist').bind('tap', function(){
+		var movieInfo = $(document).uncut('getMovieInfo');
+		UncutCheckR.database.addMovie(new Movie(
+								movieInfo.ean,
+								movieInfo.title,
+								movieInfo.fsk,
+								movieInfo.cut,
+								movieInfo.index,
+								movieInfo.time,
+								config.database.modes.wishlist
+							));
 	});
 	
 });
