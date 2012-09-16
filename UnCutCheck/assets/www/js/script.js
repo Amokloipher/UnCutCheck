@@ -40,12 +40,16 @@ $(document).on('ready', function(){
 		UncutCheckR.database.addMovie(new Movie(
 								movieInfo.ean,
 								movieInfo.title,
-								movieInfo.fsk,
-								movieInfo.cut,
-								movieInfo.index,
-								movieInfo.time,
+								movieInfo.freigabe,
+								movieInfo.isCut,
+								movieInfo.indiziert,
+								movieInfo.laufzeit,
 								config.database.modes.shelf
-							));
+							), function(tx, rs){
+								alert(movieInfo.title + " added to shelf.");
+							}, function(tx, error){
+								alert("Error adding to shelf: "+error);
+							});
 	});
 	
 	$('#scan-result .wishlist').bind('tap', function(){
@@ -53,19 +57,30 @@ $(document).on('ready', function(){
 		UncutCheckR.database.addMovie(new Movie(
 								movieInfo.ean,
 								movieInfo.title,
-								movieInfo.fsk,
-								movieInfo.cut,
-								movieInfo.index,
-								movieInfo.time,
+								movieInfo.freigabe,
+								movieInfo.isCut,
+								movieInfo.indiziert,
+								movieInfo.laufzeit,
 								config.database.modes.wishlist
-							));
+							), function(tx, rs){
+								alert(movieInfo.title + " added to Wishlist.");
+							}, function(tx, error){
+								alert("Error adding to Wishlist: "+error);
+							});
 	});
-	
+
 });
+
+$("div[data-role=page]").live('pageshow', function(){
+	$(".main-content", this).css("min-height", $(window).height()-$("div[data-role=header]", this).height()+"px");
+})
 
 $(document).bind('deviceready', function(){
 	UncutCheckR.database.initializeDatabase();
 	
+	$(".movie .title").live('tap', function(){
+		$(".details", $(this).parent()).slideToggle();
+	})
 });
 
 function showModal(){

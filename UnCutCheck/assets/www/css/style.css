@@ -6,7 +6,11 @@
 
 .main-content{
 /* 	height: 70%; */
-	height: 469px;
+/* 	height: 469px; */
+/* 	overflow-y: scroll; */
+}
+.scrollcontainer{
+	overflow: scroll;
 }
 
 .my-footer{
@@ -50,4 +54,36 @@
 
 .ui-loader{
     z-index: 1501;
+}
+
+#movie-list .mode{
+	text-align: center;
+}
+#movie-list ul{
+	list-style: none;
+	margin: 0px;
+	padding-left: 0px;
+}
+#movie-list .movie {
+	margin-bottom: 7px;
+}
+#movie-list .movie .details{
+	display: none;
+}
+
+#movie-list .movie .details{
+	padding-top: 7px;
+	padding-bottom: 7px;
+	background-color: #000;
+}
+#movie-list .movie .details .col-1{
+	padding-left: 7px;
+	width: 30%
+}
+#movie-list .movie .details .col-2{
+	padding-left: 15px;
+}
+#movie-list .movie .title{
+	margin-bottom: 0px;
+	position: inherit;
 }

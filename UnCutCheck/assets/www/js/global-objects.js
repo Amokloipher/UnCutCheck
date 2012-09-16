@@ -55,7 +55,7 @@ var UncutCheckR	=	{
 			getMovieList		:	function(mode, successCB, errorCB){
 				console.debug('[database] getting Movies List in Mode: '+mode);
 				this.db.transaction(function(tx){
-					tx.executeSql("SELECT * FROM "+ config.database.MoviesTable +" WHERE mode='"+mode+"'", [], successCB, errorCB);
+					tx.executeSql("SELECT * FROM "+ config.database.MoviesTable +" WHERE mode='"+mode+"' ORDER BY title", [], successCB, errorCB);
 				});
 			},
 			addMovie			:	function(movie, successCB, errorCB){
@@ -73,14 +73,25 @@ var UncutCheckR	=	{
 		gui				:	{
 			renderShelf			:	function(parent){
 				console.debug('[gui] renderShelf invoked!');
-				$(parent).html();
+				$(parent).html("");
 				UncutCheckR.database.getMovieList(config.database.modes.current, function(tx, rs){
 					console.debug('[gui] successfully received MoviesList');
 					var i;
 					for(i=0;i<rs.rows.length;i++){
-						$(parent).append("<li class='movie'>"+rs.rows.item(i).title+"</li>");
-						console.debug('[gui] successfully appended Movie: '+rs.rows.item(i).title);
+						var htmlString = "<li class='movie'>";
+						htmlString += "<a href='#' data-role='button' data-corners='false' class='title'>"+rs.rows.item(i).title+"</a>";
+						htmlString += "<div class='details table'>";
+							htmlString += "<div class='fsk table-row'><div class='table-cell col-1'>FSK: </div><div class='table-cell col-2'>"+rs.rows.item(i).fsk+"</div></div>";
+							htmlString += "<div class='cut table-row'><div class='table-cell col-1'>Geschnitten: </div><div class='table-cell col-2'>"+rs.rows.item(i).cut+"</div></div>";
+							htmlString += "<div class='index table-row'><div class='table-cell col-1'>Index: </div><div class='table-cell col-2'>"+rs.rows.item(i).indexed+"</div></div>";
+							htmlString += "<div class='time table-row'><div class='table-cell col-1'>Laufzeit: </div><div class='table-cell col-2'>"+rs.rows.item(i).time+"</div></div>";
+						htmlString += "</div>";
+						htmlString += "</li>";
+						$(parent).append(htmlString);
+//						console.debug('[gui] successfully appended Movie: '+rs.rows.item(i).title);
 					}
+					$("a", parent).button();
+					$(".mode", $(parent).parent()).html(config.database.modes.current == 'shelf'?'My Shelf':'My Wishlist');
 				}, 
 				function(error){
 					console.error('Error fetching MoviesList in '+ config.database.modes.current +' Mode');
